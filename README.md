@@ -1,114 +1,5 @@
-# TifTiff - Image Processing Tool | Phần mềm xử lý ảnh
-
-## English | Tiếng Anh
-
-TifTiff is a powerful, user-friendly tool for processing and converting image files, with special capabilities for handling geospatial data in GeoTIFF format.
-
-![TifTiff Application](screenshots/app.png)
-
-### Features
-
-- **Basic Image Processing**:
-  - Convert between different image formats (PNG, JPEG, TIFF, etc.)
-  - Resize images with custom scaling
-  - Remove black or white backgrounds
-  - Adjust brightness, contrast, and saturation
-
-- **Geospatial Processing**:
-  - Convert between different coordinate systems (EPSG:4326, EPSG:3857, etc.)
-  - Preserve geospatial metadata when converting formats
-  - Support for multiple geospatial output formats (GeoTIFF, GeoJPEG2000, ERDAS Imagine)
-  - Automatic coordinate system detection
-
-- **Metadata Handling**:
-  - Extract and view image metadata
-  - Export metadata to CSV or JSON formats
-  - Comprehensive metadata support for EXIF and geospatial information
-
-- **User Interface**:
-  - Intuitive tab-based interface
-  - Dark and light themes
-  - Multiple language support (English, Vietnamese)
-  - Progress tracking and detailed logs
-  - Drag and drop support
-
-### Installation
-
-#### Requirements
-- Python 3.8 or higher
-- Required Python packages:
-  - PIL/Pillow
-  - Rasterio
-  - NumPy
-  - ttkbootstrap
-  - tkinterdnd2
-
-#### Method 1: Run from Source
-1. Clone this repository:
-   ```
-   git clone https://github.com/yourusername/TifTiff.git
-   ```
-
-2. Install the required dependencies:
-   ```
-   pip install -r requirements.txt
-   ```
-
-3. Run the application:
-   ```
-   python app.py
-   ```
-
-#### Method 2: Download Executable
-1. Download the latest release from the [Releases](https://github.com/yourusername/TifTiff/releases) page
-2. Extract the zip file to your desired location
-3. Run `TifTiff.exe`
-
-### Usage
-
-#### Basic Image Processing
-1. Select the source image(s) or folder using the "Select Files" or "Select Folder" buttons
-2. Choose an output folder where processed images will be saved
-3. Set your desired output format and scaling options
-4. Use the "Advanced" tab to adjust brightness, contrast, and saturation if needed
-5. Click "Start Processing" to begin the conversion
-
-#### Geospatial Processing
-1. Select GeoTIFF source images
-2. Go to the "Coordinates" tab and enable coordinate system transformation
-3. Select your target coordinate system
-4. Choose whether to preserve geospatial information in the output
-5. Select your preferred geospatial output format
-6. Click "Start Processing" to begin the conversion
-
-#### Exporting Metadata
-1. Select the source image(s) or folder
-2. Go to the "Options" tab
-3. Click "Export CSV" or "Export JSON" to extract and save the metadata
-
-### Configuration
-TifTiff automatically saves your settings between sessions, including:
-- Theme preferences
-- Language selection
-- Last used input/output directories
-- Processing options
-
-### Language Support
-To change the application language:
-1. Go to the "Options" tab
-2. Select your preferred language from the dropdown menu
-
-### License
-This software is released under the [MIT License](LICENSE).
-
-### Credits
-TifTiff is developed by [Your Name/Organization]. It leverages the following open-source libraries:
-- [Pillow](https://python-pillow.org/) for image processing
-- [Rasterio](https://rasterio.readthedocs.io/) for geospatial operations
-- [ttkbootstrap](https://ttkbootstrap.readthedocs.io/) for the modern UI
-- [tkinterdnd2](https://pypi.org/project/tkinterdnd2/) for drag and drop support
-
----
+# TifTiff - Tif/Tiff Image Processing Tool | Phần mềm xử lý ảnh Tif/Tiff
+![GitHub release (latest SemVer)](https://img.shields.io/badge/version-v1.0.0-blue)
 
 ## Tiếng Việt | Vietnamese
 
@@ -156,7 +47,7 @@ TifTiff là công cụ mạnh mẽ, thân thiện với người dùng để x�
 #### Phương pháp 1: Chạy từ mã nguồn
 1. Sao chép kho lưu trữ này:
    ```
-   git clone https://github.com/yourusername/TifTiff.git
+   git clone https://github.com/ninhhaidang/TifTiff.git
    ```
 
 2. Cài đặt các gói phụ thuộc cần thiết:
@@ -170,7 +61,7 @@ TifTiff là công cụ mạnh mẽ, thân thiện với người dùng để x�
    ```
 
 #### Phương pháp 2: Tải xuống tệp thực thi
-1. Tải xuống phiên bản mới nhất từ trang [Releases](https://github.com/yourusername/TifTiff/releases)
+1. Tải xuống phiên bản mới nhất từ trang [Releases](https://github.com/ninhhaidang/TifTiff/releases)
 2. Giải nén tệp zip đến vị trí mong muốn của bạn
 3. Chạy `TifTiff.exe`
 
@@ -212,8 +103,118 @@ TifTiff tự động lưu cài đặt của bạn giữa các phiên, bao gồm:
 Phần mềm này được phát hành theo [Giấy phép MIT](LICENSE).
 
 ### Công nhận
-TifTiff được phát triển bởi [Tên/Tổ chức của bạn]. Nó tận dụng các thư viện mã nguồn mở sau:
+TifTiff được phát triển bởi [Ninh Hải Đăng]. Nó tận dụng các thư viện mã nguồn mở sau:
 - [Pillow](https://python-pillow.org/) cho xử lý hình ảnh
 - [Rasterio](https://rasterio.readthedocs.io/) cho hoạt động không gian địa lý
 - [ttkbootstrap](https://ttkbootstrap.readthedocs.io/) cho giao diện người dùng hiện đại
 - [tkinterdnd2](https://pypi.org/project/tkinterdnd2/) cho hỗ trợ kéo và thả
+
+---
+
+## English | Tiếng Anh
+
+TifTiff is a powerful, user-friendly tool for processing and converting image files, with special capabilities for handling geospatial data in GeoTIFF format.
+
+![TifTiff Application](screenshots/app.png)
+
+### Features
+
+- **Basic Image Processing**:
+  - Convert between different image formats (PNG, JPEG, TIFF, etc.)
+  - Resize images with custom scaling
+  - Remove black or white backgrounds
+  - Adjust brightness, contrast, and saturation
+
+- **Geospatial Processing**:
+  - Convert between different coordinate systems (EPSG:4326, EPSG:3857, etc.)
+  - Preserve geospatial metadata when converting formats
+  - Support for multiple geospatial output formats (GeoTIFF, GeoJPEG2000, ERDAS Imagine)
+  - Automatic coordinate system detection
+
+- **Metadata Handling**:
+  - Extract and view image metadata
+  - Export metadata to CSV or JSON formats
+  - Comprehensive metadata support for EXIF and geospatial information
+
+- **User Interface**:
+  - Intuitive tab-based interface
+  - Dark and light themes
+  - Multiple language support (English, Vietnamese)
+  - Progress tracking and detailed logs
+  - Drag and drop support
+
+### Installation
+
+#### Requirements
+- Python 3.8 or higher
+- Required Python packages:
+  - PIL/Pillow
+  - Rasterio
+  - NumPy
+  - ttkbootstrap
+  - tkinterdnd2
+
+#### Method 1: Run from Source
+1. Clone this repository:
+   ```
+   git clone https://github.com/ninhhaidang/TifTiff.git
+   ```
+
+2. Install the required dependencies:
+   ```
+   pip install -r requirements.txt
+   ```
+
+3. Run the application:
+   ```
+   python app.py
+   ```
+
+#### Method 2: Download Executable
+1. Download the latest release from the [Releases](https://github.com/ninhhaidang/TifTiff/releases) page
+2. Extract the zip file to your desired location
+3. Run `TifTiff.exe`
+
+### Usage
+
+#### Basic Image Processing
+1. Select the source image(s) or folder using the "Select Files" or "Select Folder" buttons
+2. Choose an output folder where processed images will be saved
+3. Set your desired output format and scaling options
+4. Use the "Advanced" tab to adjust brightness, contrast, and saturation if needed
+5. Click "Start Processing" to begin the conversion
+
+#### Geospatial Processing
+1. Select GeoTIFF source images
+2. Go to the "Coordinates" tab and enable coordinate system transformation
+3. Select your target coordinate system
+4. Choose whether to preserve geospatial information in the output
+5. Select your preferred geospatial output format
+6. Click "Start Processing" to begin the conversion
+
+#### Exporting Metadata
+1. Select the source image(s) or folder
+2. Go to the "Options" tab
+3. Click "Export CSV" or "Export JSON" to extract and save the metadata
+
+### Configuration
+TifTiff automatically saves your settings between sessions, including:
+- Theme preferences
+- Language selection
+- Last used input/output directories
+- Processing options
+
+### Language Support
+To change the application language:
+1. Go to the "Options" tab
+2. Select your preferred language from the dropdown menu
+
+### License
+This software is released under the [MIT License](LICENSE).
+
+### Credits
+TifTiff is developed by [Ninh Hai Dang]. It leverages the following open-source libraries:
+- [Pillow](https://python-pillow.org/) for image processing
+- [Rasterio](https://rasterio.readthedocs.io/) for geospatial operations
+- [ttkbootstrap](https://ttkbootstrap.readthedocs.io/) for the modern UI
+- [tkinterdnd2](https://pypi.org/project/tkinterdnd2/) for drag and drop support
