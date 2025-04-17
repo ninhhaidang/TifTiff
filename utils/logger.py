@@ -58,6 +58,10 @@ class AsyncLogger:
         """Đặt biến trạng thái để cập nhật"""
         self.status_var = status_var
     
+    def set_log_callback(self, callback):
+        """Đặt callback function để hiển thị log trực tiếp"""
+        self.console_callback = callback
+    
     def add_listener(self, listener):
         """Thêm listener để nhận thông báo khi có log mới"""
         if callable(listener) and listener not in self.log_listeners:

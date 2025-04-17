@@ -19,19 +19,48 @@ class BasicTab:
         self.app = app
         self.build()
         
+    def update_language(self):
+        """Cập nhật ngôn ngữ cho tất cả các thành phần"""
+        # Lưu lại tham chiếu đến các widget để cập nhật
+        if hasattr(self, 'input_frame'):
+            self.input_frame.config(text=f"{ICONS['input']} {self.app._('input_title')}")
+            
+        if hasattr(self, 'output_frame'):
+            self.output_frame.config(text=f"{ICONS['output']} {self.app._('output_title')}")
+            
+        if hasattr(self, 'select_folder_btn'):
+            self.select_folder_btn.config(text=self.app._("select_folder"))
+            
+        if hasattr(self, 'select_files_btn'):
+            self.select_files_btn.config(text=self.app._("select_files"))
+            
+        if hasattr(self, 'drag_drop_tip'):
+            self.drag_drop_tip.config(text=f"💡 {self.app._('drag_drop_tip')}")
+            
+        if hasattr(self, 'output_select_btn'):
+            self.output_select_btn.config(text=self.app._("select_folder"))
+            
+        if hasattr(self, 'export_format_label'):
+            self.export_format_label.config(text=self.app._("export_format"))
+        
     def build(self):
         """Xây dựng giao diện tab"""
         # Phần nhập liệu
-        input_frame = ttk.LabelFrame(
+        self.input_frame = ttk.LabelFrame(
             self.parent, 
             text=f"{ICONS['input']} {self.app._('input_title')}", 
             padding=10,
             bootstyle="primary"
         )
-        input_frame.pack(fill="x", pady=(0, 10), ipady=5)
+        self.input_frame.pack(fill="x", pady=(0, 15), ipady=5)
         
-        input_group = ttk.Frame(input_frame)
-        input_group.pack(fill="x")
+        # Container cho toàn bộ phần input
+        input_container = ttk.Frame(self.input_frame)
+        input_container.pack(fill="x", expand=True)
+        
+        # Container cho entry và các nút
+        input_group = ttk.Frame(input_container)
+        input_group.pack(fill="x", expand=True, pady=(0, 10))
         
         self.input_entry = ttk.Entry(
             input_group, 
@@ -42,46 +71,57 @@ class BasicTab:
         self.input_entry.pack(side="left", fill="x", expand=True, ipady=4)
         
         button_frame = ttk.Frame(input_group)
-        button_frame.pack(side="right", padx=(5, 0))
+        button_frame.pack(side="right", padx=(10, 0))
         
-        ttk.Button(
+        self.select_folder_btn = ttk.Button(
             button_frame, 
             text=self.app._("select_folder"), 
             command=self.app.browse_input_folder,
-            bootstyle="outline"
-        ).pack(side="left", padx=(0, 5))
+            bootstyle="outline",
+            width=12
+        )
+        self.select_folder_btn.pack(side="left", padx=(0, 5))
         
-        ttk.Button(
+        self.select_files_btn = ttk.Button(
             button_frame, 
             text=self.app._("select_files"), 
             command=self.app.browse_input,
-            bootstyle="outline"
-        ).pack(side="left")
+            bootstyle="outline-primary",
+            width=12
+        )
+        self.select_files_btn.pack(side="left")
         
         # Hỗ trợ kéo thả
         self.input_entry.drop_target_register(DND_FILES)
         self.input_entry.dnd_bind('<<Drop>>', self.app.handle_drop_input)
         
-        tip_frame = ttk.Frame(input_frame)
-        tip_frame.pack(fill="x", pady=(5, 0))
-        ttk.Label(
+        # Phần gợi ý kéo thả
+        tip_frame = ttk.Frame(input_container)
+        tip_frame.pack(fill="x")
+        
+        self.drag_drop_tip = ttk.Label(
             tip_frame, 
             text=f"💡 {self.app._('drag_drop_tip')}", 
             font=self.app.small_font,
             foreground="gray"
-        ).pack(side="left")
+        )
+        self.drag_drop_tip.pack(side="left")
         
         # Phần xuất
-        output_frame = ttk.LabelFrame(
+        self.output_frame = ttk.LabelFrame(
             self.parent, 
             text=f"{ICONS['output']} {self.app._('output_title')}", 
             padding=10,
             bootstyle="primary"
         )
-        output_frame.pack(fill="x", ipady=5)
+        self.output_frame.pack(fill="x", pady=(0, 15), ipady=5)
         
-        output_group = ttk.Frame(output_frame)
-        output_group.pack(fill="x")
+        # Container cho toàn bộ phần output
+        output_container = ttk.Frame(self.output_frame)
+        output_container.pack(fill="x", expand=True)
+        
+        output_group = ttk.Frame(output_container)
+        output_group.pack(fill="x", expand=True, pady=(0, 10))
         
         self.output_entry = ttk.Entry(
             output_group, 
@@ -91,39 +131,43 @@ class BasicTab:
         )
         self.output_entry.pack(side="left", fill="x", expand=True, ipady=4)
         
-        ttk.Button(
+        self.output_select_btn = ttk.Button(
             output_group, 
             text=self.app._("select_folder"), 
             command=self.app.browse_output,
-            bootstyle="outline"
-        ).pack(side="right", padx=(5, 0))
+            bootstyle="outline",
+            width=12
+        )
+        self.output_select_btn.pack(side="right", padx=(10, 0))
         
-        # Hỗ trợ kéo thả
+        # Hỗ trợ kéo thả output
         self.output_entry.drop_target_register(DND_FILES)
         self.output_entry.dnd_bind('<<Drop>>', self.app.handle_drop_output)
         
-        # Định dạng xuất và scale
-        format_frame = ttk.Frame(self.parent)
-        format_frame.pack(fill="x", pady=(15, 0))
+        # Phần định dạng xuất
+        format_frame = ttk.Frame(output_container)
+        format_frame.pack(fill="x", pady=(0, 5))
         
-        ttk.Label(format_frame, text=self.app._("export_format"), font=self.app.normal_font).pack(side="left")
-        
-        ttk.OptionMenu(
+        format_label = ttk.Label(
             format_frame, 
-            self.app.output_format_var, 
-            self.app.output_format_var.get(), 
-            ".png", ".jpg", ".tif", ".bmp",
-            bootstyle="outline",
-            command=self._format_changed
-        ).pack(side="left", padx=(5, 15))
+            text=f"{self.app._('export_format')}:",
+            font=self.app.normal_font
+        )
+        format_label.pack(side="left", padx=(0, 10))
         
-        ttk.Label(format_frame, text=self.app._("scale_ratio"), font=self.app.normal_font).pack(side="left")
-        scale_entry = ttk.Entry(format_frame, textvariable=self.app.scale_ratio_var, width=8)
-        scale_entry.pack(side="left", padx=(5, 0))
+        formats = [".png", ".jpg", ".tif", ".bmp"]
+        self.format_combobox = ttk.Combobox(
+            format_frame, 
+            textvariable=self.app.output_format_var, 
+            values=formats,
+            state="readonly",
+            width=8,
+            bootstyle="primary"
+        )
+        self.format_combobox.pack(side="left")
+        self.format_combobox.bind("<<ComboboxSelected>>", self._format_changed)
         
     def _format_changed(self, *args):
         """Xử lý khi người dùng thay đổi định dạng ảnh"""
-        # Nếu định dạng ảnh chuyển đổi sang .tif, tự động bật tùy chọn lưu thông tin địa lý
-        if self.app.output_format_var.get() == ".tif" and self.app.enable_reproject.get():
-            self.app.preserve_geospatial.set(True)
-            self.app._update_geo_options() 
+        # Gọi xử lý trong app nếu cần
+        pass 

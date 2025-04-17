@@ -43,7 +43,7 @@ class ImageProcessor:
                 
         except Exception as e:
             if self.logger:
-                self.logger.log(f"Lỗi khi điều chỉnh ảnh: {e}")
+                self.logger.log(f"❌ {self._('error_prefix')}: {self._('adjustment_error')} - {e}")
             
         return img
         
@@ -66,7 +66,7 @@ class ImageProcessor:
             return Image.fromarray(data)
         except Exception as e:
             if self.logger:
-                self.logger.log(f"Lỗi khi xử lý nền ảnh: {e}")
+                self.logger.log(f"❌ {self._('error_prefix')}: {self._('background_error')} - {e}")
             return img
             
     def resize_image(self, img, scale_ratio):
@@ -77,10 +77,10 @@ class ImageProcessor:
                 new_size = (int(img.width * scale), int(img.height * scale))
                 img = img.resize(new_size, RESAMPLE)
                 if self.logger:
-                    self.logger.log(f"Đã thay đổi kích thước thành {new_size}")
+                    self.logger.log(f"ℹ️ {self._('info_prefix')}: {self._('resized')} {new_size[0]}x{new_size[1]}")
         except Exception as e:
             if self.logger:
-                self.logger.log(f"Lỗi khi thay đổi kích thước ảnh: {e}")
+                self.logger.log(f"❌ {self._('error_prefix')}: {self._('resize_error')} - {e}")
         return img
         
     def process_image(self, image_path, output_folder, output_format=None, 
@@ -154,14 +154,14 @@ class ImageProcessor:
             
         except Exception as e:
             if self.logger:
-                self.logger.log(f"Lỗi khi xử lý ảnh {os.path.basename(image_path)}: {e}")
+                self.logger.log(f"❌ {self._('error_prefix')}: {self._('processing_error')} {os.path.basename(image_path)} - {e}")
             return None
             
     def batch_process(self, files, output_folder, **kwargs):
         """Xử lý hàng loạt ảnh"""
         if not files:
             if self.logger:
-                self.logger.log("Không có file nào để xử lý")
+                self.logger.log(f"⚠️ {self._('warning_prefix')}: {self._('no_files_selected')}")
             return []
             
         start_time = time.time()
@@ -169,7 +169,7 @@ class ImageProcessor:
         total = len(files)
         
         if self.logger:
-            self.logger.log(f"Tổng số ảnh: {total}")
+            self.logger.log(f"📊 {self._('info_prefix')}: {self._('total_images')} - {total}")
             
         for idx, path in enumerate(files, 1):
             try:
@@ -179,18 +179,18 @@ class ImageProcessor:
                     
                 if self.logger:
                     pct = (idx / total) * 100
-                    self.logger.log(f"✅ [{idx}/{total}] Hoàn tất ({pct:.2f}%)")
+                    self.logger.log(f"✅ {self._('success_prefix')}: [{idx}/{total}] {self._('completed')} ({pct:.2f}%)")
             except Exception as e:
                 if self.logger:
-                    self.logger.log(f"❌ Lỗi khi xử lý {os.path.basename(path)}: {e}")
+                    self.logger.log(f"❌ {self._('error_prefix')}: {self._('processing_error')} {os.path.basename(path)} - {e}")
                     
         # Thống kê thời gian
         elapsed = time.time() - start_time
         mins, secs = divmod(elapsed, 60)
         
         if self.logger:
-            self.logger.log(f"🎉 Tất cả các file đã được xử lý")
-            self.logger.log(f"⏱️ Thời gian xử lý: {int(mins)} phút {secs:.2f} giây")
+            self.logger.log(f"🎉 {self._('success_prefix')}: {self._('all_completed')}")
+            self.logger.log(f"⏱️ {self._('info_prefix')}: {self._('processing_time')} - {int(mins)} {self._('minutes')} {secs:.2f} {self._('seconds')}")
             
         return processed_files
 
@@ -234,7 +234,7 @@ class ImageProcessor:
                 if output_path:
                     processed_files.append(output_path)
             except Exception as e:
-                self.logger.log(f"Lỗi khi xử lý ảnh {os.path.basename(image_path)}: {str(e)}")
+                self.logger.log(f"❌ {self._('error_prefix')}: {self._('processing_error')} {os.path.basename(image_path)} - {e}")
         
         return processed_files
     
@@ -260,3 +260,51 @@ class ImageProcessor:
         
         # Tạo ảnh mới từ mảng đã xử lý
         return Image.fromarray(data) 
+
+    def adjust_image(self, image, brightness=1.0, contrast=1.0, saturation=1.0):
+        """Điều chỉnh độ sáng, độ tương phản và độ bão hòa"""
+        try:
+            # Chuyển đổi về float để tính toán
+            brightness = float(brightness)
+            contrast = float(contrast)
+            saturation = float(saturation)
+            
+            # Kiểm tra nếu không cần điều chỉnh
+            if brightness == 1.0 and contrast == 1.0 and saturation == 1.0:
+                return image
+            
+            # Tạo enhancer và áp dụng
+            if brightness != 1.0:
+                enhancer = ImageEnhance.Brightness(image)
+                image = enhancer.enhance(brightness)
+                
+            if contrast != 1.0:
+                enhancer = ImageEnhance.Contrast(image)
+                image = enhancer.enhance(contrast)
+                
+            if saturation != 1.0:
+                enhancer = ImageEnhance.Color(image)
+                image = enhancer.enhance(saturation)
+                
+            return image
+        except Exception as e:
+            self.logger.log(f"❌ {self._('error_prefix')}: {self._('adjustment_error')} - {e}")
+            return image
+
+    def batch_process_with_options(self, file_paths, output_dir, options=None):
+        """
+        Xử lý hàng loạt với các tùy chọn
+        
+        Tham số:
+            file_paths (list): Danh sách đường dẫn ảnh cần xử lý
+            output_dir (str): Thư mục đầu ra
+            options (dict): Các tùy chọn xử lý
+        """
+        if options is None:
+            options = {}
+            
+        try:
+            return self.process_batch(file_paths, output_dir, **options)
+        except Exception as e:
+            self.logger.log(f"❌ {self._('error_prefix')}: {self._('processing_error')} {os.path.basename(image_path)} - {e}")
+            return [] 

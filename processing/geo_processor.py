@@ -21,7 +21,7 @@ class GeoProcessor:
     def log(self, message):
         """Ghi log nếu logger được cung cấp"""
         if self.logger:
-            self.logger(message)
+            self.logger.log(message)
     
     def detect_crs(self, file_path):
         """Phát hiện hệ tọa độ từ file GeoTIFF"""
@@ -32,7 +32,7 @@ class GeoProcessor:
                 else:
                     return None
         except Exception as e:
-            self.log(f"Lỗi khi đọc hệ tọa độ: {str(e)}")
+            self.log(f"❌ {self._('error_prefix')}: {self._('crs_read_error')} - {str(e)}")
             return None
     
     def batch_reproject(self, input_files, output_dir, dst_crs, options=None):
@@ -59,7 +59,7 @@ class GeoProcessor:
                     if result:
                         results.append(result)
                 except Exception as e:
-                    self.log(f"Lỗi khi xử lý {os.path.basename(src_path)}: {str(e)}")
+                    self.log(f"❌ {self._('error_prefix')}: {self._('processing_error')} {os.path.basename(src_path)} - {str(e)}")
             
             return results
     
@@ -83,7 +83,7 @@ class GeoProcessor:
             with rasterio.open(src_path) as src:
                 # Kiểm tra xem file có hệ tọa độ không
                 if not src.crs:
-                    self.log(f"File {os.path.basename(src_path)} không có thông tin hệ tọa độ")
+                    self.log(f"⚠️ {self._('warning_prefix')}: {os.path.basename(src_path)} {self._('missing_crs')}")
                     return None
                 
                 # Tính toán transformation
@@ -128,14 +128,14 @@ class GeoProcessor:
                         # Ghi dữ liệu vào band trong file đầu ra
                         dst.write(destination, i)
                 
-                self.log(f"Đã chuyển đổi hệ tọa độ {src.crs} sang {dst_crs} cho {os.path.basename(dst_path)}")
+                self.log(f"✅ {self._('success_prefix')}: {self._('reprojected')} {src.crs} → {dst_crs} {self._('for')} {os.path.basename(dst_path)}")
                 return dst_path
                 
         except (RasterioIOError, CRSError) as e:
-            self.log(f"Lỗi khi chuyển đổi hệ tọa độ cho {os.path.basename(src_path)}: {str(e)}")
+            self.log(f"❌ {self._('error_prefix')}: {self._('reprojection_error')} {os.path.basename(src_path)} - {str(e)}")
             return None
         except Exception as e:
-            self.log(f"Lỗi không xác định: {str(e)}")
+            self.log(f"❌ {self._('error_prefix')}: {self._('unknown_error')} - {str(e)}")
             return None
     
     def _get_driver_from_path(self, file_path):
@@ -150,7 +150,14 @@ class GeoProcessor:
             '.png': 'PNG',
             '.jpg': 'JPEG',
             '.jpeg': 'JPEG',
-            '.vrt': 'VRT'
+            '.vrt': 'VRT',
+            '.jp2': 'JP2OpenJPEG',
+            '.img': 'HFA',
+            '.nc': 'netCDF',
+            '.grd': 'AIG',
+            '.mbtiles': 'MBTiles',
+            '.gpkg': 'GPKG',
+            '.shp': 'ESRI Shapefile'
         }
         
         return drivers.get(ext, 'GTiff')  # Mặc định là GTiff
@@ -181,12 +188,12 @@ class GeoProcessor:
                     dst.write(array[:, :, i], i+1)
             
             if self.logger:
-                self.logger.log(f"Đã lưu ảnh với thông tin hệ tọa độ {geo_metadata['crs']}")
+                self.logger.log(f"✅ {self._('success_prefix')}: {self._('saved_with_crs')} {geo_metadata['crs']}")
                 
             return True
         except Exception as e:
             if self.logger:
-                self.logger.log(f"Lỗi khi lưu ảnh với thông tin địa lý: {e}")
+                self.logger.log(f"❌ {self._('error_prefix')}: {self._('geospatial_save_error')} - {e}")
             return False
             
     def extract_geo_metadata(self, image_path, dst_crs, source_crs=None):
@@ -197,7 +204,7 @@ class GeoProcessor:
                 
                 if not src_crs:
                     if self.logger:
-                        self.logger.log("Không tìm thấy thông tin hệ tọa độ trong ảnh nguồn")
+                        self.logger.log(f"⚠️ {self._('warning_prefix')}: {self._('no_source_crs')}")
                     return None
                     
                 # Tính toán transform cho hệ tọa độ đích
@@ -218,7 +225,7 @@ class GeoProcessor:
                 return geo_metadata
         except Exception as e:
             if self.logger:
-                self.logger.log(f"Lỗi khi trích xuất metadata địa lý: {e}")
+                self.logger.log(f"❌ {self._('error_prefix')}: {self._('metadata_extraction_error')} - {e}")
             return None
             
     def update_geo_metadata_scale(self, geo_metadata, scale):
@@ -244,5 +251,5 @@ class GeoProcessor:
             return updated_metadata
         except Exception as e:
             if self.logger:
-                self.logger.log(f"Lỗi khi cập nhật metadata địa lý: {e}")
+                self.logger.log(f"❌ {self._('error_prefix')}: {self._('metadata_update_error')} - {e}")
             return geo_metadata 

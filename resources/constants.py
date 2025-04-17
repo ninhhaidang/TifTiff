@@ -44,31 +44,28 @@ THEMES = {
 
 # Các biểu tượng cho UI
 ICONS = {
-    "input": "📂",
-    "output": "📤",
-    "convert": "🔄",
-    "geo": "🌐",
-    "options": "⚙️",
-    "info": "ℹ️",
-    "progress": "📊",
-    "check": "✅",
-    "error": "❌",
-    "warning": "⚠️",
-    "metadata": "📋",
-    "visual": "📊",
-    "workflow": "🔄",
-    "adjust": "🎚️",
-    "theme": "🎨",
-    "language": "🌍",
-    "enable_geo": "🌐",
-    "source_crs": "🗺️",
-    "target_crs": "📍",
-    "detected_crs": "🔍",
-    "check_crs": "🔎",
-    "geo_export": "💾",
-    "save_geo": "📌",
-    "geo_format": "📄",
-    "geo_guide": "ℹ️"
+    "input": "📂",           # File input
+    "output": "📤",          # File output
+    "convert": "🔄",         # Convert/process
+    "settings": "⚙️",        # Settings
+    "options": "🔧",         # Options
+    "adjust": "🎨",          # Image adjustments
+    "geo": "🌐",             # Geospatial
+    "info": "📝",            # Log/info
+    "presentation": "📊",    # Presentation mode
+    "research": "🔬",        # Research mode 
+    "detected_crs": "🔎",    # Detected CRS
+    "source_crs": "🌍",      # Source CRS
+    "target_crs": "🎯",      # Target CRS
+    "progress": "📈",        # Progress
+    "geo_export": "🗺️",      # Geo export
+    "geo_guide": "ℹ️",       # Geo info
+    "help": "❓",            # Help
+    "success": "✅",         # Success
+    "warning": "⚠️",         # Warning
+    "error": "❌",           # Error
+    "theme": "🎭",           # Theme
+    "language": "🌍"         # Language
 }
 
 # Cài đặt cho PIL

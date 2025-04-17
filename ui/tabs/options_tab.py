@@ -17,26 +17,31 @@ class OptionsTab:
         self.app = app
         self.build()
         
+    def update_language(self):
+        """Cập nhật ngôn ngữ cho tất cả các thành phần"""
+        # Cập nhật tiêu đề phần giao diện
+        for widget in self.parent.winfo_children():
+            if isinstance(widget, ttk.LabelFrame):
+                if widget.cget("text").endswith(self.app._("appearance")):
+                    widget.config(text=self.app._("appearance"))
+                elif widget.cget("text").endswith(self.app._("metadata_export")):
+                    widget.config(text=self.app._("metadata_export"))
+        
+        # Cập nhật các nút xuất metadata
+        for widget in self.parent.winfo_children():
+            if isinstance(widget, ttk.LabelFrame):
+                if widget.cget("text").endswith(self.app._("metadata_export")):
+                    for frame in widget.winfo_children():
+                        if isinstance(frame, ttk.Frame):
+                            for btn in frame.winfo_children():
+                                if isinstance(btn, ttk.Button):
+                                    if "csv" in str(btn.cget("command")).lower():
+                                        btn.config(text=self.app._("export_csv"))
+                                    elif "json" in str(btn.cget("command")).lower():
+                                        btn.config(text=self.app._("export_json"))
+    
     def build(self):
         """Xây dựng giao diện tab"""
-        # Tùy chọn nền
-        bg_frame = ttk.LabelFrame(self.parent, text=self.app._("bg_options"), padding=10)
-        bg_frame.pack(fill="x", pady=(0, 10), ipady=5)
-        
-        ttk.Checkbutton(
-            bg_frame, 
-            text=self.app._("remove_black"), 
-            variable=self.app.remove_black_bg,
-            bootstyle="success"
-        ).pack(anchor="w", pady=(0, 5))
-        
-        ttk.Checkbutton(
-            bg_frame, 
-            text=self.app._("remove_white"), 
-            variable=self.app.remove_white_bg,
-            bootstyle="success"
-        ).pack(anchor="w")
-        
         # Phần chủ đề và ngôn ngữ
         appearance_frame = ttk.LabelFrame(self.parent, text=self.app._("appearance"), padding=10)
         appearance_frame.pack(fill="x", pady=(0, 10), ipady=5)
@@ -96,7 +101,7 @@ class OptionsTab:
         
         ttk.Label(
             version_frame,
-            text="TifTiff v1.1 - © 2023",
+            text="TifTiff v1.1 - © 2025",
             font=("Segoe UI", 8),
             foreground="#888888"
         ).pack(side="right") 
