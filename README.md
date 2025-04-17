@@ -5,7 +5,11 @@
 
 TifTiff là công cụ mạnh mẽ, thân thiện với người dùng để xử lý và chuyển đổi các tệp hình ảnh, với khả năng đặc biệt xử lý dữ liệu không gian địa lý ở định dạng GeoTIFF.
 
-![Ứng dụng TifTiff](screenshots/app.png)
+### Ảnh chụp màn hình
+![Giao diện TifTiff 1](screenshots/Screenshot-1.png)
+![Giao diện TifTiff 2](screenshots/Screenshot-2.png)
+![Giao diện TifTiff 3](screenshots/Screenshot-3.png)
+![Giao diện TifTiff 4](screenshots/Screenshot-4.png)
 
 ### Tính năng
 
@@ -115,7 +119,11 @@ TifTiff được phát triển bởi [Ninh Hải Đăng]. Nó tận dụng các 
 
 TifTiff is a powerful, user-friendly tool for processing and converting image files, with special capabilities for handling geospatial data in GeoTIFF format.
 
-![TifTiff Application](screenshots/app.png)
+### Screenshots
+![TifTiff Interface 1](screenshots/Screenshot-1.png)
+![TifTiff Interface 2](screenshots/Screenshot-2.png)
+![TifTiff Interface 3](screenshots/Screenshot-3.png)
+![TifTiff Interface 4](screenshots/Screenshot-4.png)
 
 ### Features
 
