@@ -1,5 +1,5 @@
 # TifTiff - Tif/Tiff Image Processing Tool | Phần mềm xử lý ảnh Tif/Tiff
-![GitHub release (latest SemVer)](https://img.shields.io/badge/version-v1.0.0-blue)
+![GitHub release (latest SemVer)](https://img.shields.io/badge/version-v1.1.0-blue)
 
 ## Tiếng Việt | Vietnamese
 

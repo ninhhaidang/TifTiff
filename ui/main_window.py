@@ -327,7 +327,7 @@ class MainWindow:
         # Thông tin phiên bản bên phải
         version_label = ttk.Label(
             status_bar,
-            text="TifTiff v1.2.0",
+            text="TifTiff v1.1.0",
             font=self.small_font,
             foreground="#888888"
         )

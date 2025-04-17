@@ -6,6 +6,8 @@ Quản lý các bản dịch đa ngôn ngữ cho ứng dụng TifTiff
 TRANSLATIONS = {
     "vi": {
         "app_title": "TifTiff - Phần mềm xử lý ảnh",
+        "app_version": "1.1.0",
+        "app_name": "TifTiff",
         "basic_tab": "Cơ bản",
         "geo_tab": "Hệ tọa độ",
         "options_tab": "Tùy chọn",
@@ -108,10 +110,24 @@ TRANSLATIONS = {
         "btn_apply": "Áp dụng",
         "btn_cancel": "Hủy",
         "always_preserve_geo": "⚠️ Luôn lưu thông tin hệ tọa độ trong chế độ nghiên cứu",
-        "help_button": "Trợ giúp & Giới thiệu"
+        "help_button": "Trợ giúp & Giới thiệu",
+        "about": "Giới thiệu",
+        "about_title": "Giới thiệu về TifTiff",
+        "about_description_title": "Giới thiệu",
+        "about_description": "TifTiff là phần mềm chuyên dụng cho việc xử lý ảnh TIFF/GeoTIFF trong lĩnh vực nghiên cứu khoa học và trình bày. Ứng dụng hỗ trợ xử lý hàng loạt ảnh, chuyển đổi định dạng và xử lý thông tin không gian địa lý.",
+        "features_title": "Tính năng chính",
+        "feature_image_processing": "Xử lý ảnh: điều chỉnh độ sáng, tương phản, độ bão hòa, thay đổi kích thước và loại bỏ nền.",
+        "feature_geo_processing": "Xử lý dữ liệu không gian địa lý: chuyển đổi hệ tọa độ, bảo toàn thông tin địa lý trong các file GeoTIFF.",
+        "feature_batch_processing": "Xử lý hàng loạt: xử lý nhiều ảnh cùng lúc, tiết kiệm thời gian cho các dự án lớn.",
+        "feature_visualization": "Phân tích và trực quan hóa dữ liệu ảnh.",
+        "developer_info": "Thông tin phát triển",
+        "developed_by": "Phần mềm được phát triển bởi Đại học Thủy lợi, Việt Nam. Liên hệ: support@tlu.edu.vn",
+        "close": "Đóng"
     },
     "en": {
         "app_title": "TifTiff - Image Processing Tool",
+        "app_version": "1.1.0",
+        "app_name": "TifTiff",
         "basic_tab": "Basic",
         "geo_tab": "Coordinates",
         "options_tab": "Options",
@@ -214,7 +230,19 @@ TRANSLATIONS = {
         "btn_apply": "Apply",
         "btn_cancel": "Cancel",
         "always_preserve_geo": "⚠️ Always preserve geospatial data in research mode",
-        "help_button": "Help & About"
+        "help_button": "Help & About",
+        "about": "About",
+        "about_title": "About TifTiff",
+        "about_description_title": "Description",
+        "about_description": "TifTiff is specialized software for processing TIFF/GeoTIFF images in scientific research and presentation. The application supports batch image processing, format conversion, and geographic information processing.",
+        "features_title": "Key Features",
+        "feature_image_processing": "Image processing: adjust brightness, contrast, saturation, resize, and background removal.",
+        "feature_geo_processing": "Geospatial data processing: coordinate system conversion, preserve geographic information in GeoTIFF files.",
+        "feature_batch_processing": "Batch processing: process multiple images simultaneously, saving time for large projects.",
+        "feature_visualization": "Analysis and visualization of image data.",
+        "developer_info": "Development Information",
+        "developed_by": "Software developed by Thuy Loi University, Vietnam. Contact: support@tlu.edu.vn",
+        "close": "Close"
     }
 }
 
