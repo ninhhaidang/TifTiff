@@ -6,12 +6,24 @@
 TifTiff là công cụ mạnh mẽ, thân thiện với người dùng để xử lý và chuyển đổi các tệp hình ảnh, với khả năng đặc biệt xử lý dữ liệu không gian địa lý ở định dạng GeoTIFF.
 
 ### Ảnh chụp màn hình
-![Giao diện TifTiff 1](screenshots/Screenshot-1.png)
-![Giao diện TifTiff 2](screenshots/Screenshot-2.png)
-![Giao diện TifTiff 3](screenshots/Screenshot-3.png)
-![Giao diện TifTiff 4](screenshots/Screenshot-4.png)
-![Giao diện TifTiff 5](screenshots/Screenshot-5.png)
-![Giao diện TifTiff 6](screenshots/Screenshot-6.png)
+<p align="center">
+  <img src="screenshots/Screenshot-1.png" alt="Giao diện TifTiff 1">
+</p>
+<p align="center">
+  <img src="screenshots/Screenshot-2.png" alt="Giao diện TifTiff 2">
+</p>
+<p align="center">
+  <img src="screenshots/Screenshot-3.png" alt="Giao diện TifTiff 3">
+</p>
+<p align="center">
+  <img src="screenshots/Screenshot-4.png" alt="Giao diện TifTiff 4">
+</p>
+<p align="center">
+  <img src="screenshots/Screenshot-5.png" alt="Giao diện TifTiff 5">
+</p>
+<p align="center">
+  <img src="screenshots/Screenshot-6.png" alt="Giao diện TifTiff 6">
+</p>
 
 ### Tính năng
 
@@ -132,12 +144,24 @@ TifTiff được phát triển bởi [Ninh Hải Đăng]. Nó tận dụng các 
 TifTiff is a powerful, user-friendly tool for processing and converting image files, with special capabilities for handling geospatial data in GeoTIFF format.
 
 ### Screenshots
-![TifTiff Interface 1](screenshots/Screenshot-1.png)
-![TifTiff Interface 2](screenshots/Screenshot-2.png)
-![TifTiff Interface 3](screenshots/Screenshot-3.png)
-![TifTiff Interface 4](screenshots/Screenshot-4.png)
-![TifTiff Interface 5](screenshots/Screenshot-5.png)
-![TifTiff Interface 6](screenshots/Screenshot-6.png)
+<p align="center">
+  <img src="screenshots/Screenshot-1.png" alt="TifTiff Interface 1">
+</p>
+<p align="center">
+  <img src="screenshots/Screenshot-2.png" alt="TifTiff Interface 2">
+</p>
+<p align="center">
+  <img src="screenshots/Screenshot-3.png" alt="TifTiff Interface 3">
+</p>
+<p align="center">
+  <img src="screenshots/Screenshot-4.png" alt="TifTiff Interface 4">
+</p>
+<p align="center">
+  <img src="screenshots/Screenshot-5.png" alt="TifTiff Interface 5">
+</p>
+<p align="center">
+  <img src="screenshots/Screenshot-6.png" alt="TifTiff Interface 6">
+</p>
 
 ### Features
 
