@@ -3,7 +3,7 @@
 
 ## Tiếng Việt | Vietnamese
 
-TifTiff là công cụ mạnh mẽ, thân thiện với người dùng để xử lý và chuyển đổi các tệp hình ảnh, với khả năng đặc biệt xử lý dữ liệu không gian địa lý ở định dạng GeoTIFF.
+TifTiff là công cụ mạnh mẽ, thân thiện với người dùng để xử lý và chuyển đổi các tệp hình ảnh, với khả năng đặc biệt xử lý dữ liệu không gian địa lý ở định dạng GeoTIFF. Phần mềm được phát triển với Python và sử dụng kiến trúc MVC hiện đại.
 
 ### Ảnh chụp màn hình
 <p align="center">
@@ -27,58 +27,75 @@ TifTiff là công cụ mạnh mẽ, thân thiện với người dùng để x�
 
 ### Tính năng
 
-- **Xử lý ảnh cơ bản**:
-  - Chuyển đổi giữa các định dạng hình ảnh khác nhau (PNG, JPEG, TIFF, JPEG2000, v.v.)
-  - Thay đổi kích thước hình ảnh với tỷ lệ tùy chỉnh
-  - Xóa nền đen hoặc trắng
-  - Điều chỉnh độ sáng, độ tương phản và độ bão hòa
-  - Tự động tối ưu hóa độ phân giải
-  - Tùy chọn nén mới cho đầu ra GeoTIFF
+#### Xử lý ảnh cơ bản
+- Chuyển đổi giữa các định dạng hình ảnh (PNG, JPEG, TIFF, JPEG2000)
+- Thay đổi kích thước với tỷ lệ tùy chỉnh
+- Xóa nền đen hoặc trắng với thuật toán tối ưu
+- Điều chỉnh độ sáng, độ tương phản và độ bão hòa
+- Tự động tối ưu hóa độ phân giải
+- Tùy chọn nén mới cho đầu ra GeoTIFF
+- Xử lý hàng loạt với đa luồng
 
-- **Xử lý dữ liệu không gian địa lý**:
-  - Chuyển đổi giữa các hệ tọa độ khác nhau (EPSG:4326, EPSG:3857, v.v.)
-  - Bảo toàn metadata không gian địa lý khi chuyển đổi định dạng
-  - Hỗ trợ nhiều định dạng đầu ra không gian địa lý (GeoTIFF, GeoJPEG2000, ERDAS Imagine)
-  - Tự động phát hiện hệ tọa độ
-  - Tối ưu hỗ trợ cho hệ tọa độ EPSG không chuẩn
+#### Xử lý dữ liệu không gian địa lý
+- Chuyển đổi giữa các hệ tọa độ (EPSG:4326, EPSG:3857, v.v.)
+- Bảo toàn metadata không gian địa lý khi chuyển đổi
+- Hỗ trợ nhiều định dạng đầu ra (GeoTIFF, GeoJPEG2000, ERDAS Imagine)
+- Tự động phát hiện và xử lý hệ tọa độ không chuẩn
+- Tối ưu hóa chuyển đổi hệ tọa độ với concurrent.futures
 
-- **Quản lý metadata**:
-  - Trích xuất và xem metadata hình ảnh
-  - Xuất metadata sang định dạng CSV hoặc JSON
-  - Hỗ trợ toàn diện cho thông tin EXIF và thông tin không gian địa lý
-  - Cải thiện khả năng trích xuất metadata từ các file lớn
+#### Quản lý metadata
+- Trích xuất và xem metadata với xử lý đa luồng
+- Xuất metadata sang CSV hoặc JSON
+- Hỗ trợ EXIF và thông tin không gian địa lý
+- Cấu trúc dữ liệu tối ưu cho file lớn
 
-- **Hiệu suất**:
-  - Cải thiện tốc độ xử lý cho file ảnh lớn
-  - Tối ưu hóa bộ nhớ khi xử lý hàng loạt
-  - Cải thiện độ ổn định khi xử lý đồng thời nhiều file
+#### Hiệu suất và Tối ưu hóa
+- Xử lý đa luồng cho tác vụ nặng
+- Hệ thống cache thông minh
+- Quản lý bộ nhớ hiệu quả
+- Ghi log không đồng bộ
+- Tối ưu hóa với NumPy
 
-- **Giao diện người dùng**:
-  - Giao diện dựa trên tab trực quan
-  - Chủ đề sáng và tối
-  - Hỗ trợ nhiều ngôn ngữ (Tiếng Anh, Tiếng Việt)
-  - Theo dõi tiến trình và nhật ký chi tiết
-  - Hỗ trợ kéo và thả
-  - Sửa lỗi giao diện khi thay đổi ngôn ngữ
+#### Giao diện người dùng
+- Thiết kế dựa trên tab trực quan
+- Chủ đề sáng và tối với ttkbootstrap
+- Hỗ trợ đa ngôn ngữ (Tiếng Anh, Tiếng Việt)
+- Theo dõi tiến trình chi tiết
+- Hỗ trợ kéo và thả với tkinterdnd2
+- Giao diện không đóng băng khi xử lý
+
+### Cấu trúc dự án
+```
+TifTiff/
+├── app.py              # Điểm khởi chạy chính
+├── processing/         # Module xử lý
+│   ├── image_processor.py
+│   ├── geo_processor.py
+│   └── metadata_processor.py
+├── ui/                 # Giao diện người dùng
+├── utils/             # Tiện ích và công cụ
+├── resources/         # Tài nguyên và hằng số
+└── requirements.txt   # Dependencies
+```
+
+### Yêu cầu hệ thống
+- Python 3.8 trở lên
+- Các gói Python cần thiết:
+  - Pillow >= 9.0.0
+  - Rasterio >= 1.3.0
+  - NumPy >= 1.22.0
+  - ttkbootstrap >= 1.10.0
+  - tkinterdnd2 >= 0.3.0
 
 ### Cài đặt
 
-#### Yêu cầu
-- Python 3.8 trở lên
-- Các gói Python cần thiết:
-  - PIL/Pillow
-  - Rasterio
-  - NumPy
-  - ttkbootstrap
-  - tkinterdnd2
-
 #### Phương pháp 1: Chạy từ mã nguồn
-1. Sao chép kho lưu trữ này:
+1. Sao chép kho lưu trữ:
    ```
    git clone https://github.com/ninhhaidang/TifTiff.git
    ```
 
-2. Cài đặt các gói phụ thuộc cần thiết:
+2. Cài đặt dependencies:
    ```
    pip install -r requirements.txt
    ```
@@ -89,53 +106,44 @@ TifTiff là công cụ mạnh mẽ, thân thiện với người dùng để x�
    ```
 
 #### Phương pháp 2: Tải xuống tệp thực thi
-1. Tải xuống phiên bản mới nhất từ trang [Releases](https://github.com/ninhhaidang/TifTiff/releases)
-2. Giải nén tệp zip đến vị trí mong muốn của bạn
+1. Tải phiên bản mới nhất từ [Releases](https://github.com/ninhhaidang/TifTiff/releases)
+2. Giải nén tệp zip
 3. Chạy `TifTiff.exe`
 
-### Cách sử dụng
+### Hướng dẫn sử dụng
 
 #### Xử lý ảnh cơ bản
-1. Chọn (các) hình ảnh nguồn hoặc thư mục bằng nút "Chọn file" hoặc "Chọn thư mục"
-2. Chọn thư mục đầu ra nơi hình ảnh đã xử lý sẽ được lưu
-3. Đặt định dạng đầu ra và tùy chọn tỷ lệ mong muốn
-4. Sử dụng tab "Nâng cao" để điều chỉnh độ sáng, độ tương phản và độ bão hòa nếu cần
-5. Nhấp vào "Bắt đầu xử lý" để bắt đầu chuyển đổi
+1. Chọn ảnh nguồn hoặc thư mục (hỗ trợ kéo thả)
+2. Chọn thư mục đầu ra
+3. Cấu hình tùy chọn xử lý
+4. Nhấp "Bắt đầu xử lý"
 
 #### Xử lý không gian địa lý
-1. Chọn hình ảnh nguồn GeoTIFF
-2. Chuyển đến tab "Hệ tọa độ" và bật chuyển đổi hệ tọa độ
-3. Chọn hệ tọa độ đích của bạn
-4. Chọn có lưu thông tin không gian địa lý trong đầu ra hay không
-5. Chọn định dạng đầu ra không gian địa lý ưa thích của bạn
-6. Nhấp vào "Bắt đầu xử lý" để bắt đầu chuyển đổi
+1. Chọn ảnh GeoTIFF nguồn
+2. Cấu hình chuyển đổi hệ tọa độ trong tab "Hệ tọa độ"
+3. Chọn định dạng đầu ra và tùy chọn bảo toàn metadata
+4. Nhấp "Bắt đầu xử lý"
 
 #### Xuất metadata
-1. Chọn (các) hình ảnh nguồn hoặc thư mục
-2. Chuyển đến tab "Tùy chọn"
-3. Nhấp vào "Xuất CSV" hoặc "Xuất JSON" để trích xuất và lưu metadata
+1. Chọn ảnh hoặc thư mục
+2. Chọn định dạng xuất (CSV/JSON) trong tab "Tùy chọn"
+3. Nhấp "Xuất metadata"
 
 ### Cấu hình
-TifTiff tự động lưu cài đặt của bạn giữa các phiên, bao gồm:
-- Tùy chọn chủ đề
-- Lựa chọn ngôn ngữ
-- Thư mục nhập/xuất được sử dụng lần cuối
-- Tùy chọn xử lý
-
-### Hỗ trợ ngôn ngữ
-Để thay đổi ngôn ngữ ứng dụng:
-1. Chuyển đến tab "Tùy chọn"
-2. Chọn ngôn ngữ ưa thích của bạn từ menu thả xuống
+- Tự động lưu cài đặt giữa các phiên
+- Quản lý cache thông minh
+- Tùy chọn ghi log
 
 ### Giấy phép
 Phần mềm này được phát hành theo [Giấy phép MIT](LICENSE).
 
 ### Công nhận
-TifTiff được phát triển bởi [Ninh Hải Đăng]. Nó tận dụng các thư viện mã nguồn mở sau:
-- [Pillow](https://python-pillow.org/) cho xử lý hình ảnh
-- [Rasterio](https://rasterio.readthedocs.io/) cho hoạt động không gian địa lý
-- [ttkbootstrap](https://ttkbootstrap.readthedocs.io/) cho giao diện người dùng hiện đại
-- [tkinterdnd2](https://pypi.org/project/tkinterdnd2/) cho hỗ trợ kéo và thả
+TifTiff được phát triển bởi [Ninh Hải Đăng] với các thư viện mã nguồn mở:
+- [Pillow](https://python-pillow.org/) - Xử lý ảnh
+- [Rasterio](https://rasterio.readthedocs.io/) - Xử lý dữ liệu địa lý
+- [NumPy](https://numpy.org/) - Tối ưu hóa tính toán
+- [ttkbootstrap](https://ttkbootstrap.readthedocs.io/) - Giao diện hiện đại
+- [tkinterdnd2](https://pypi.org/project/tkinterdnd2/) - Hỗ trợ kéo thả
 
 ---
 
