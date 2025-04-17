@@ -10,25 +10,36 @@ TifTiff là công cụ mạnh mẽ, thân thiện với người dùng để x�
 ![Giao diện TifTiff 2](screenshots/Screenshot-2.png)
 ![Giao diện TifTiff 3](screenshots/Screenshot-3.png)
 ![Giao diện TifTiff 4](screenshots/Screenshot-4.png)
+![Giao diện TifTiff 5](screenshots/Screenshot-5.png)
+![Giao diện TifTiff 6](screenshots/Screenshot-6.png)
 
 ### Tính năng
 
 - **Xử lý ảnh cơ bản**:
-  - Chuyển đổi giữa các định dạng hình ảnh khác nhau (PNG, JPEG, TIFF, v.v.)
+  - Chuyển đổi giữa các định dạng hình ảnh khác nhau (PNG, JPEG, TIFF, JPEG2000, v.v.)
   - Thay đổi kích thước hình ảnh với tỷ lệ tùy chỉnh
   - Xóa nền đen hoặc trắng
   - Điều chỉnh độ sáng, độ tương phản và độ bão hòa
+  - Tự động tối ưu hóa độ phân giải
+  - Tùy chọn nén mới cho đầu ra GeoTIFF
 
 - **Xử lý dữ liệu không gian địa lý**:
   - Chuyển đổi giữa các hệ tọa độ khác nhau (EPSG:4326, EPSG:3857, v.v.)
   - Bảo toàn metadata không gian địa lý khi chuyển đổi định dạng
   - Hỗ trợ nhiều định dạng đầu ra không gian địa lý (GeoTIFF, GeoJPEG2000, ERDAS Imagine)
   - Tự động phát hiện hệ tọa độ
+  - Tối ưu hỗ trợ cho hệ tọa độ EPSG không chuẩn
 
 - **Quản lý metadata**:
   - Trích xuất và xem metadata hình ảnh
   - Xuất metadata sang định dạng CSV hoặc JSON
   - Hỗ trợ toàn diện cho thông tin EXIF và thông tin không gian địa lý
+  - Cải thiện khả năng trích xuất metadata từ các file lớn
+
+- **Hiệu suất**:
+  - Cải thiện tốc độ xử lý cho file ảnh lớn
+  - Tối ưu hóa bộ nhớ khi xử lý hàng loạt
+  - Cải thiện độ ổn định khi xử lý đồng thời nhiều file
 
 - **Giao diện người dùng**:
   - Giao diện dựa trên tab trực quan
@@ -36,6 +47,7 @@ TifTiff là công cụ mạnh mẽ, thân thiện với người dùng để x�
   - Hỗ trợ nhiều ngôn ngữ (Tiếng Anh, Tiếng Việt)
   - Theo dõi tiến trình và nhật ký chi tiết
   - Hỗ trợ kéo và thả
+  - Sửa lỗi giao diện khi thay đổi ngôn ngữ
 
 ### Cài đặt
 
@@ -124,25 +136,36 @@ TifTiff is a powerful, user-friendly tool for processing and converting image fi
 ![TifTiff Interface 2](screenshots/Screenshot-2.png)
 ![TifTiff Interface 3](screenshots/Screenshot-3.png)
 ![TifTiff Interface 4](screenshots/Screenshot-4.png)
+![TifTiff Interface 5](screenshots/Screenshot-5.png)
+![TifTiff Interface 6](screenshots/Screenshot-6.png)
 
 ### Features
 
 - **Basic Image Processing**:
-  - Convert between different image formats (PNG, JPEG, TIFF, etc.)
+  - Convert between different image formats (PNG, JPEG, TIFF, JPEG2000, etc.)
   - Resize images with custom scaling
   - Remove black or white backgrounds
   - Adjust brightness, contrast, and saturation
+  - Automatic resolution optimization
+  - New compression options for GeoTIFF output
 
 - **Geospatial Processing**:
   - Convert between different coordinate systems (EPSG:4326, EPSG:3857, etc.)
   - Preserve geospatial metadata when converting formats
   - Support for multiple geospatial output formats (GeoTIFF, GeoJPEG2000, ERDAS Imagine)
   - Automatic coordinate system detection
+  - Improved support for non-standard EPSG coordinate systems
 
 - **Metadata Handling**:
   - Extract and view image metadata
   - Export metadata to CSV or JSON formats
   - Comprehensive metadata support for EXIF and geospatial information
+  - Improved metadata extraction capabilities for large files
+
+- **Performance**:
+  - Enhanced processing speed for large image files
+  - Optimized memory usage during batch processing
+  - Improved stability when processing multiple files simultaneously
 
 - **User Interface**:
   - Intuitive tab-based interface
@@ -150,6 +173,7 @@ TifTiff is a powerful, user-friendly tool for processing and converting image fi
   - Multiple language support (English, Vietnamese)
   - Progress tracking and detailed logs
   - Drag and drop support
+  - Fixed UI glitches when changing language
 
 ### Installation
 

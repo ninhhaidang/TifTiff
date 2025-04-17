@@ -1,6 +1,6 @@
 {
   "language": "en",
-  "theme": "cosmo",
+  "theme": "darkly",
   "last_input_dir": "",
   "last_output_dir": "",
   "export_format": "PNG",
@@ -21,7 +21,7 @@
   "output_format": ".tif",
   "enable_reproject": true,
   "preserve_geospatial": true,
-  "processing_mode": "presentation",
+  "processing_mode": "research",
   "presentation_output_format": ".tif",
   "presentation_remove_white_bg": false,
   "presentation_remove_black_bg": true,
