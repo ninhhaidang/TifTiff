@@ -1,0 +1,45 @@
+# Các thư mục build và artifacts
+build/
+dist/
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+packaging/build-artifacts/
+packaging/output/
+
+# Các file đã đóng gói
+*.dmg
+*.exe
+*.rpm
+*.deb
+
+# Môi trường và cài đặt
+venv/
+env/
+.env
+.venv
+.Python
+.python-version
+.DS_Store
+
+# Cache và database
+*.sqlite
+*.db
+*.sqlite3
+*.log
+
+# Thư mục IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+.project
+.pydevproject
+.settings/
+
+# Các file tạm thời
+*~
+*.bak
+*.tmp
+.*.swp 
